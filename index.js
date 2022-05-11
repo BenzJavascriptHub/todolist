@@ -47,7 +47,7 @@ const addTask = document.querySelector('#add-task');
 
 
 form.addEventListener('submit', (e) => {
-  e.preventDefault(); // 防止頁面重新刷新
+  //e.preventDefault(); // 防止頁面重新刷新
   if(addTask.value !== null){
 
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -92,8 +92,8 @@ checkTasks.forEach((checkTask, index) => {
   checkTask.addEventListener('change', function() {
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
     if (this.checked) {
-      // console.log("Checkbox is checked..");
-      // console.log(this.id)
+      console.log("Checkbox is checked..");
+      console.log(this.id)
       localTasks.forEach((task, index)=>{
         if(task.id === this.id){
           task.content.checked = true
