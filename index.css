@@ -88,3 +88,15 @@ body {
 .task-checked {
   text-decoration: line-through;
 }
+
+.remove {
+  margin-right: 5px;
+  float: right;
+  cursor: pointer;
+}
+
+.remove:hover {
+  color: rgb(107, 64, 64);
+  font-weight: bold;
+  /* font-size: 18px; */
+}

@@ -8,11 +8,13 @@ if (localTasks != null && localTasks.length != 0) {
         tasks.innerHTML += `<div class="to-do-task">
         <input type="checkbox" class="check-task" id="${task.id}" checked/>
         <p class="task-content task-checked">${task.content.content}</p>
+        <button class="remove">刪除</button>
         </div>`;
       } else {
         tasks.innerHTML += `<div class="to-do-task">
         <input type="checkbox" class="check-task" id="${task.id}"/>
         <p class="task-content">${task.content.content}</p>
+        <button class="remove">刪除</button>
         </div>`;
       }
   });
@@ -116,3 +118,21 @@ checkTasks.forEach((checkTask, index) => {
     localStorage.setItem('tasks', JSON.stringify(localTasks));
   });
 })
+
+let removeTasks = document.querySelectorAll(".remove");
+removeTasks.forEach((removeTask, index) => {
+  removeTask.addEventListener('click', function() {
+    console.log(removeTask.previousElementSibling.previousElementSibling.id);
+    removeTask.parentElement.remove()
+
+    let localTasks = JSON.parse(localStorage.getItem('tasks'));
+    localTasks.forEach((task, index) => {
+      if(removeTask.previousElementSibling.previousElementSibling.id === task.id) {
+        localTasks.splice(index, 1);
+      }
+    })
+
+    // 保存資料到localstorage
+    localStorage.setItem('tasks', JSON.stringify(localTasks));    
+  });
+});
