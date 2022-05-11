@@ -47,8 +47,8 @@ const addTask = document.querySelector('#add-task');
 
 
 form.addEventListener('submit', (e) => {
-  //e.preventDefault(); // 防止頁面重新刷新
-  if(addTask.value !== null){
+  // e.preventDefault(); // 防止頁面重新刷新
+  if(addTask.value !== null && addTask.value.length !== 0){
 
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
@@ -64,6 +64,7 @@ form.addEventListener('submit', (e) => {
       <input type="checkbox" class="check-task" id="task-${localTasks.length+1}"/>
       <p class="task-content">${addTask.value}</p>
       </div>`;
+      // window.location.reload()
     } else {
       localTasks = [{
         'id': 'task-1',
@@ -76,6 +77,7 @@ form.addEventListener('submit', (e) => {
       <input type="checkbox" class="check-task" id="task-1"/>
       <p class="task-content">${addTask.value}</p>
       </div>`;
+      // window.location.reload()
     }
 
     // 保存資料到localstorage
