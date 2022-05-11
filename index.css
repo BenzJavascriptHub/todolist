@@ -84,3 +84,7 @@ body {
   color: #fff;
   text-align: center;
 }
+
+.task-checked {
+  text-decoration: line-through;
+}

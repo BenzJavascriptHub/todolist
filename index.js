@@ -7,7 +7,7 @@ if (localTasks != null && localTasks.length != 0) {
       if (task.content.checked){
         tasks.innerHTML += `<div class="to-do-task">
         <input type="checkbox" class="check-task" id="${task.id}" checked/>
-        <p class="task-content">${task.content.content}</p>
+        <p class="task-content task-checked">${task.content.content}</p>
         </div>`;
       } else {
         tasks.innerHTML += `<div class="to-do-task">
@@ -99,6 +99,7 @@ checkTasks.forEach((checkTask, index) => {
           task.content.checked = true
         }
       })
+      checkTask.nextElementSibling.setAttribute('class', 'task-checked task-content');
   
     } else {
       // console.log("Checkbox is not checked..");
@@ -107,6 +108,7 @@ checkTasks.forEach((checkTask, index) => {
           task.content.checked = false
         }
       })
+      checkTask.nextElementSibling.setAttribute('class', 'task-content');
     }
     // 保存資料到localstorage
     localStorage.setItem('tasks', JSON.stringify(localTasks));
