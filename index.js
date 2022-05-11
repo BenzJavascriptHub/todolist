@@ -26,9 +26,13 @@ const tasks = document.querySelector('#tasks');
 form.addEventListener('submit', (e) => {
   e.preventDefault(); // 防止頁面重新刷新
   console.log(addTask.value);
-  tasks.innerHTML += `<div class="to-do-task">
-  <input type="checkbox" class="check-task"/>
-  <p class="task-content">${addTask.value}</p>
-</div>`;
+  if(addTask.value.length > 0){
+    tasks.innerHTML += `<div class="to-do-task">
+    <input type="checkbox" class="check-task"/>
+    <p class="task-content">${addTask.value}</p>
+    </div>`;
+  } else {
+    alert('輸入框不得為空值')
+  }
 });
 
