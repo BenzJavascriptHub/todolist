@@ -50,7 +50,7 @@ const addTask = document.querySelector('#add-task');
 
 form.addEventListener('submit', (e) => {
   // e.preventDefault(); // 防止頁面重新刷新
-  if(addTask.value !== null && addTask.value.length !== 0){
+  if(addTask.value !== null && addTask.value.length !== 0 && addTask.value.length <= 100){
 
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
@@ -85,8 +85,11 @@ form.addEventListener('submit', (e) => {
     // 保存資料到localstorage
     localStorage.setItem('tasks', JSON.stringify(localTasks));
     
-  } else {
-    alert('輸入框不得為空值')
+  } else if(addTask.value.length > 100) {
+    alert('輸入值太多，想要壞壞喔!!');
+  } 
+  else {
+    alert('輸入框不得為空值，手殘喔!!');
   }
 });
 
