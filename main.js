@@ -10,7 +10,7 @@ function init() {
         // 計時50毫秒後，才轉成opacity = 1
         setTimeout(() => { main.style.opacity = 1 }, 50)
 
-    }, 2500)
+    }, 1000)
 }
 
 init();

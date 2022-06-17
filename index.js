@@ -4,19 +4,19 @@ const tasks = document.querySelector('#tasks');
 let localTasks = JSON.parse(localStorage.getItem('tasks'));
 if (localTasks != null && localTasks.length != 0) {
   localTasks.forEach((task, index) => {
-      if (task.content.checked){
-        tasks.innerHTML += `<div class="to-do-task">
+    if (task.content.checked) {
+      tasks.innerHTML += `<div class="to-do-task">
         <input type="checkbox" class="check-task" id="${task.id}" checked/>
         <p class="task-content task-checked">${task.content.content}</p>
         <button class="remove">刪除</button>
         </div>`;
-      } else {
-        tasks.innerHTML += `<div class="to-do-task">
+    } else {
+      tasks.innerHTML += `<div class="to-do-task">
         <input type="checkbox" class="check-task" id="${task.id}"/>
         <p class="task-content">${task.content.content}</p>
         <button class="remove">刪除</button>
         </div>`;
-      }
+    }
   });
 
 } else {
@@ -49,21 +49,21 @@ const addTask = document.querySelector('#add-task');
 
 
 form.addEventListener('submit', (e) => {
-  // e.preventDefault(); // 防止頁面重新刷新
-  if(addTask.value !== null && addTask.value.length !== 0 && addTask.value.length <= 100){
+  e.preventDefault(); // 防止頁面重新刷新
+  if (addTask.value !== null && addTask.value.length !== 0 && addTask.value.length <= 100) {
 
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
 
-    if (localTasks != null && localTasks.length !== 0){
+    if (localTasks != null && localTasks.length !== 0) {
       localTasks.push({
-        'id': `task-${localTasks.length+1}`,
+        'id': `task-${localTasks.length + 1}`,
         'content': {
           'checked': false,
           'content': addTask.value
         },
-      }) 
+      })
       tasks.innerHTML += `<div class="to-do-task">
-      <input type="checkbox" class="check-task" id="task-${localTasks.length+1}"/>
+      <input type="checkbox" class="check-task" id="task-${localTasks.length + 1}"/>
       <p class="task-content">${addTask.value}</p>
       </div>`;
       // window.location.reload()
@@ -84,34 +84,36 @@ form.addEventListener('submit', (e) => {
 
     // 保存資料到localstorage
     localStorage.setItem('tasks', JSON.stringify(localTasks));
-    
-  } else if(addTask.value.length > 100) {
+
+  } else if (addTask.value.length > 100) {
     alert('輸入值太多，想要壞壞喔!!');
-  } 
+  }
   else {
     alert('輸入框不得為空值，手殘喔!!');
   }
+
+  document.getElementById("#add-task-form").reset();
 });
 
 let checkTasks = document.querySelectorAll(".check-task");
 
 checkTasks.forEach((checkTask, index) => {
-  checkTask.addEventListener('change', function() {
+  checkTask.addEventListener('change', function () {
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
     if (this.checked) {
       console.log("Checkbox is checked..");
       console.log(this.id)
-      localTasks.forEach((task, index)=>{
-        if(task.id === this.id){
+      localTasks.forEach((task, index) => {
+        if (task.id === this.id) {
           task.content.checked = true
         }
       })
       checkTask.nextElementSibling.setAttribute('class', 'task-checked task-content');
-  
+
     } else {
       // console.log("Checkbox is not checked..");
-      localTasks.forEach((task, index)=>{
-        if(task.id === this.id){
+      localTasks.forEach((task, index) => {
+        if (task.id === this.id) {
           task.content.checked = false
         }
       })
@@ -124,18 +126,18 @@ checkTasks.forEach((checkTask, index) => {
 
 let removeTasks = document.querySelectorAll(".remove");
 removeTasks.forEach((removeTask, index) => {
-  removeTask.addEventListener('click', function() {
+  removeTask.addEventListener('click', function () {
     console.log(removeTask.previousElementSibling.previousElementSibling.id);
     removeTask.parentElement.remove()
 
     let localTasks = JSON.parse(localStorage.getItem('tasks'));
     localTasks.forEach((task, index) => {
-      if(removeTask.previousElementSibling.previousElementSibling.id === task.id) {
+      if (removeTask.previousElementSibling.previousElementSibling.id === task.id) {
         localTasks.splice(index, 1);
       }
     })
 
     // 保存資料到localstorage
-    localStorage.setItem('tasks', JSON.stringify(localTasks));    
+    localStorage.setItem('tasks', JSON.stringify(localTasks));
   });
 });
