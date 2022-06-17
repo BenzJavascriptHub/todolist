@@ -6,29 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>數字時鐘&&To Do List</title>
     <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./loader.css" />
   </head>
   <body>
-    <div class="clock"></div>
-
-    <div class="container">
-      <div class="add-task">
-        <form action="" class="add-task">
-          <input
-            type="text"
-            id="add-task"
-            name="taskname"
-            placeholder="請輸入代辦事項"
-          />
-          <input type="submit" id="add-task-btn" value="新增" />
-        </form>
-      </div>
-      <div class="task-area">
-        <div class="task-name">代辦事項</div>
-        <br />
-        <div id="tasks"></div>
-      </div>
+    <!-- loader -->
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
+    <section class="main">
+      <div class="clock"></div>
+      <div class="container">
+        <div class="add-task">
+          <form action="" class="add-task">
+            <input
+              type="text"
+              id="add-task"
+              name="taskname"
+              placeholder="請輸入代辦事項"
+            />
+            <input type="submit" id="add-task-btn" value="新增" />
+          </form>
+        </div>
+        <div class="task-area">
+          <div class="task-name">代辦事項</div>
+          <br />
+          <div id="tasks"></div>
+        </div>
+      </div>
+    </section>
+
     <script src="index.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

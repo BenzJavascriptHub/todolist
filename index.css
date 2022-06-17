@@ -6,7 +6,22 @@
 
 body {
   background: #333;
+  font-family: "Lato", sans-serif;
+  /* font-size: 18px; */
+  /* line-height: 1.6; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
 }
+
+/* main */
+.main {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
 .clock {
   font-size: 4em;
   text-align: center;
